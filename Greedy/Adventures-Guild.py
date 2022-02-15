@@ -5,7 +5,6 @@ https://freedeveloper.tistory.com/367?category=888096
 
 a = int(input())
 list = list(map(int,input().split()))
-list.sort()
 x = set(list)   # 중복 제거위해 list를 집합으로 만들어 변수 x에 선언
 groups=0        # 그룹 갯수 
 
