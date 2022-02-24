@@ -1,18 +1,14 @@
-import sys
+#2진법 구현
 
+n = int(input())
 
-
-while True:
-    arr = []
-    n = int(sys.stdin.readline().rstrip())
-    if n == 0:
-        break
-    for i in range(2,int(n**0.5)+1):
-        print(i)
-        if n%i == 0:
-            continue
-        arr.append(i)
-        
-    x = n - arr[-1]
-    print(n,'=',x,'+',arr[-1])
-
+result = ''
+while n != 0:
+    if n % 2:
+        result = '1' + result
+        n = n // 2
+    else:
+        result = '0' + result
+        n = n // 2
+    print(n)
+print(result)

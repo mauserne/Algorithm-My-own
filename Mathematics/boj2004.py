@@ -1,3 +1,8 @@
+"""
+조합 0의 개수
+https://www.acmicpc.net/problem/2004
+"""
+
 n, m = map(int,input().split())
 
 def count_number(n,k):
