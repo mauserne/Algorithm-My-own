@@ -2,8 +2,7 @@
 진법 변환2
 https://www.acmicpc.net/problem/11005
 
-
-수정 필요!!
+if문 조건을 잘쓰자!!
 """
 
 
