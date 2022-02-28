@@ -19,7 +19,4 @@ t = int(input())
 
 for _ in range(t):
     n = int(sys.stdin.readline().rstrip())
-    if 3 > n:
-        print(dp[n])
-    else:
-        print(dp[n])
+    print(dp[n])
