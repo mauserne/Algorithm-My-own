@@ -1,18 +1,25 @@
 import sys
 
-dp = [0] * 11
+n = int(input())
 
-dp[1] = 1
-dp[2] = 2
-dp[3] = 4
+stair = [0] * (n+1)
+#각 계단의 점수 저장
 
+for i in range(1,n+1):
+    stair[i] = int(sys.stdin.readline().rstrip())
 
-t = int(input())
-for _ in range(t):
-    n = int(sys.stdin.readline().rstrip())
-    if dp[n] != 0 :
-        print(dp[n])
-        continue
-    for i in range(4,n+1):
-        dp[i] = dp[i-3] + dp[i-2] + dp[i-1]
+dp = [0] * (n+1)
+#각 계단까지 이동했을떄의 점수 저장
+
+if n == 1:
+    print(stair[1])
+elif n == 2:
+    print(stair[1] + stair[2])
+else:
+    dp[1] = stair[1]
+    dp[2] = dp[1] + stair[2]
+
+    for i in range(3,n+1):
+        dp[i] = max(dp[i-3]+stair[i-1]+stair[i], dp[i-2]+stair[i])
+
     print(dp[n])
