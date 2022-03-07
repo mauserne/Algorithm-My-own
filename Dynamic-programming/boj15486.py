@@ -2,6 +2,7 @@
 퇴사 2
 https://www.acmicpc.net/problem/15486
 https://dogsavestheworld.tistory.com/m/142
+https://ojt90902.tistory.com/475
 """
 
 n = int(input())

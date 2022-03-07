@@ -1,30 +1,31 @@
 """
 가장 긴 증가하는 부분 수열 4
 https://www.acmicpc.net/problem/14002
-https://my-coding-notes.tistory.com/266
 """
 n = int(input())
 
-dp = [0] * n
-
 arr = list(map(int,input().split()))
+
+dp = [1] * n
+# 수열이 i까지일떄 증가하는 부분수열의 길이 
 
 for i in range(n):
     for j in range(i):
-        if arr[i] > arr[j] and dp[i] < dp[j]:
-            dp[i] = dp[j]
-    dp[i] += 1
+        if arr[i] > arr[j]:
+            dp[i] = max(dp[i],dp[j]+1)
 
+dpmax = max(dp)
 
-tmp = dp.index(max(dp))
 result = []
+count = dpmax
+dp = dp[::-1]
+arr = arr[::-1]
 
-for i in range(tmp,-1,-1):
-    if dp[i] == 1:
-        result.append(arr[i])
-        break
-    result.append(arr[i])
+while count > 0:
+    for i in range(n):
+        if dp[i] == count:
+            result.append(arr[i])
+            count -= 1
 
-result.sort()
-print(max(dp))
-print(' '.join(map(str,result)))
+print(dpmax)
+print(' '.join(map(str,result[::-1])))
