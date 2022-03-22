@@ -38,3 +38,5 @@ for i in range(n):
     matrix.append(list(map(int , input())))
 
 print(bfs(0,0))
+for i in range(n):
+    print(matrix[i])
