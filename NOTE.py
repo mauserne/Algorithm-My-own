@@ -1,21 +1,20 @@
-n = int(input())
-cards = list(map(int, input().split()))
+import sys
+
+arr = [i for i in range(10001)]
 
 
-m = int(input())
-numbs = list(map(int, input().split()))
 
-hash = {}
+def bi_search(target, start, end):
+    mid = 0 
+    while start <= end:
+        mid = (start + end) //2
+        print(start, end, mid)
+        if arr[mid] == target:
+            return mid
+        if arr[mid] < target:
+            start = mid + 1
+        if arr[mid] > target:
+            end = mid - 1
+    return -1
 
-for i in cards:
-    print(hash)
-    if i in hash:
-        hash[i] += 1
-    else:
-        hash[i] = 1
-
-for i in numbs:
-    if i in hash:
-        print(hash[i], end=' ')
-    else:
-        print(0, end=' ')
+print(bi_search(5025, 1, 10000))
