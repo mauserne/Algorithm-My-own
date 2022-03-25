@@ -19,9 +19,11 @@ end = max(lan)
 #이분탐색
 while start <= end:
     mid = (start + end) // 2
+    print(start, mid, end)
     count = 0
     for i in lan:
         count += i // mid
+    print(count)
     if count >= n:
         start = mid + 1
     else:
