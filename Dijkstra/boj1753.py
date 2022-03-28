@@ -6,9 +6,11 @@ https://www.acmicpc.net/problem/1753
 
 import sys
 import math
+import heapq
 
 input = sys.stdin.readline
 
+#노드 개수 V, 간선 개수 E, 시작노드 K
 V, E = map(int, input().split())
 K = int(input())
 
@@ -21,27 +23,19 @@ for _ in range(E):
     u,v,w = map(int, input().split())
     graph[u].append((v,w))
 
-def get_smallest_node():
-    min_value = math.inf
-    index = 0
-    for i in range(1, V+1):
-        if distance[i] < min_value and not visited[i]:
-            min_value = distance[i]
-            index = i
-    return index
-
 def dijkstra(start):
+    q = []
+    heapq.heappush(q,(0,start))
     distance[start] = 0
-    visited[start] = True
-    for j in graph[start]:
-        distance[j[0]] = j[1]
-    for _ in range(V - 1):
-        now = get_smallest_node()
-        visited[now] = True
+    while q:
+        dist, now = heapq.heappop(q)
+        if distance[now] < dist:
+            continue
         for i in graph[now]:
-            cost = distance[now] + i[1]
+            cost = dist + i[1]
             if cost < distance[i[0]]:
                 distance[i[0]] = cost
+                heapq.heappush(q, (cost, i[0]))
 
 dijkstra(K)
 
