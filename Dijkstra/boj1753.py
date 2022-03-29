@@ -15,7 +15,6 @@ V, E = map(int, input().split())
 K = int(input())
 
 graph = [[] for _ in range(V+1)]
-visited = [False] * (V+1)
 distance = [math.inf] * (V+1)
 
 
