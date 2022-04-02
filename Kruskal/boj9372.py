@@ -1,6 +1,7 @@
 """
 상근이의 여행
 https://www.acmicpc.net/problem/9372
+time spent : 26mins
 """
 
 # M-사이클 의 갯수 출력
