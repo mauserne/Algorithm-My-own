@@ -1,6 +1,6 @@
-N = 3
+arr = [0,1]
 
-for k in range(1,N+1):
-    for i in range(1,N+1):
-        for j in range(1,N+1):
-            print(i,k,j)
+for i in range(len(arr)):
+    print(i)
+    arr.append(1)
+    print(arr)
