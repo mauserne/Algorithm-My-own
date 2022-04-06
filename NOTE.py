@@ -1,6 +1,4 @@
-arr = [0,1]
-
-for i in range(len(arr)):
-    print(i)
-    arr.append(1)
-    print(arr)
+for i in range(60):
+    for j in str(i):
+        if j == '3':
+            print(i)
