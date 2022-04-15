@@ -1,9 +1,20 @@
-import sys
+from time import sleep
 
-input = sys.stdin.readline
 
-T = int(input())
+N = int(input())
+now = N
 
-for i in range(1, T+1):
-    a,b = map(int, input().split())
-    print('Case #{idx}: {num1} + {num2} = {ans}'.format(num1 = a, num2 = b, idx = i ,ans = a+b))
+cycle = 0
+while True:
+    if now < 10:
+        now = now*10+now
+    else:
+        a = now // 10 
+        b = now % 10
+        now = b*10+ (a+b)%10
+
+    cycle += 1
+    if now == N:
+        break
+
+print(cycle)
