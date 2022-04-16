@@ -1,20 +1,12 @@
-from time import sleep
+h, m = map(int, input().split())
+c = int(input())
 
+rm = m+c
 
-N = int(input())
-now = N
+m = rm % 60
+h += rm//60
 
-cycle = 0
-while True:
-    if now < 10:
-        now = now*10+now
-    else:
-        a = now // 10 
-        b = now % 10
-        now = b*10+ (a+b)%10
+if h > 23:
+    h -= 24
 
-    cycle += 1
-    if now == N:
-        break
-
-print(cycle)
+print(h,m)
