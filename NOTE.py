@@ -1,12 +1,14 @@
-h, m = map(int, input().split())
-c = int(input())
+def hansu(num):
+    count = 0
+    for i in range(1, num+1):
+        arr = list(map(int, str(i)))
+        if i < 100:
+            count += 1
+        elif arr[0] - arr[1] == arr[1] - arr[2]:
+            count += 1
 
-rm = m+c
+    return count
+    
 
-m = rm % 60
-h += rm//60
-
-if h > 23:
-    h -= 24
-
-print(h,m)
+num = int(input())
+print(hansu(num))
