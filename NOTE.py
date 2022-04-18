@@ -1,14 +1,14 @@
-def hansu(num):
+C = int(input())
+
+result = []
+for _ in range(C):
+    a = list(map(int, input().split()))
+    avg = (sum(a)-a[0])/a[0]
     count = 0
-    for i in range(1, num+1):
-        arr = list(map(int, str(i)))
-        if i < 100:
+    for i in a[1:]:
+        if i > avg:
             count += 1
-        elif arr[0] - arr[1] == arr[1] - arr[2]:
-            count += 1
+    result.append(count/a[0]*100)
 
-    return count
-    
-
-num = int(input())
-print(hansu(num))
+for i in result:
+        print(f'{i:.3f}%')
