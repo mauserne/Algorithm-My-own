@@ -1,22 +1,30 @@
+"""
+숨바꼭질
+https://www.acmicpc.net/problem/1697
+"""
+
+
 from collections import deque
 
 
 N, K = map(int, input().split())
 
-def bfs():
-    q = deque()
-    q.append(N)
-    while q:
-        x = q.popleft()
+time = [0] * (10**5+1)
+
+def bfs(n):
+    queue = deque()
+    queue.append(n)
+    time[n] = 1
+    while queue:
+        x = queue.popleft()
+
         if x == K:
-            print(time[x])
-            return
-        for nx in (x-1, x+1, x*2):
-            if 0 <= nx <= MAX and not time[nx]:
-                time[nx] = time[x] + 1
-                q.append(nx)
+            return time[x]-1
 
-MAX = 10**5 
-time = [0] * (MAX +1)
+        for i in [x-1,x+1,x*2]:
+            if 0 <= i <= 10**5:
+                if time[i] == 0:
+                    queue.append(i)
+                    time[i] = time[x] + 1
 
-bfs()
+print(bfs(N))
