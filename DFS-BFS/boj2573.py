@@ -1,5 +1,11 @@
-import sys
+"""
+빙산
+https://www.acmicpc.net/problem/2573
+"""
 from collections import deque
+import sys
+sys.setrecursionlimit(10**4)
+
 input = sys.stdin.readline
 
 
@@ -20,11 +26,6 @@ year = 0
 dx = [-1,0,0,1]
 dy = [0,-1,1,0]
 
-def meltwaiting(a,b):
-    if not (a,b) in meltlist:
-        meltlist[(a,b)] = 0
-    meltlist[(a,b)] += 1
-
 def bfs(a,b):
     q = deque()
     q.append((a,b))
@@ -38,19 +39,38 @@ def bfs(a,b):
 
             if 0 <= nx < N and 0 <= ny < M:
                 if not visited[nx][ny] and matrix[nx][ny] < 1:
-                    meltwaiting(nx,ny)
+                    matrix[x][y] -= 1
                 if not visited[nx][ny] and matrix[nx][ny] >0:
                     visited[nx][ny] = True
                     q.append((nx,ny))
 
-meltlist = dict()
+
+
+"""
+def dfs(a,b):
+
+
+    visited[a][b] = True
+
+    for i in range(4):
+        nx = dx[i] + a
+        ny = dy[i] + b
+
+        if 0 <= nx < N and 0 <= ny < M:
+            if not visited[nx][ny] and matrix[nx][ny] < 1:
+                matrix[a][b] -= 1
+            if not visited[nx][ny] and matrix[nx][ny] > 0:
+                dfs(nx,ny)
+
+"""
+
 
 while True:
     part = 0
     visited = [[False]*M for _ in range(N)]
 
-    for i in range(1,N):
-        for j in range(1,M):
+    for i in range(1,N-1):
+        for j in range(1,M-1):
             if not visited[i][j] and matrix[i][j] > 0:
                 part += 1
                 if part >= 2:
@@ -61,8 +81,4 @@ while True:
     if part == 0:
         print(0)
         break
-    for x,y in list(meltlist.keys()):
-        matrix[x][y] -= meltlist[(x,y)]
-
     year += 1
-    meltlist.clear()
