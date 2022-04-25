@@ -25,43 +25,43 @@ def bfs():
                 clean += 1
             else:
                 d0 += 1
-        elif d0 == 1:
+        if d0 == 1:
             if matrix[x0][y0-1] == 0:
                 q.append((x0,y0-1,1))
                 clean += 1
             else:
                 d0 += 1
-        elif d0 == 2:
+        if d0 == 2:
             if matrix[x0+1][y0] == 0:
                 q.append((x0+1,y0,2))
                 clean += 1
             else:
                 d0 += 1
-        elif d0 == 3:
+        if d0 == 3:
             if matrix[x0][y0+1] == 0:
                 q.append((x0,y0+1,3))
                 clean += 1
             else:
                 d0 += 1
-        elif d0 == 4:
+        if d0 == 4:
             if matrix[x0-1][y0] == 0:
                 q.append((x0-1,y0,0))
                 clean += 1
             else:
                 d0 += 1
-        elif d0 == 5:
+        if d0 == 5:
             if matrix[x0][y0-1] == 0:
                 q.append((x0,y0-1,1))
                 clean += 1
             else:
                 d0 += 1
-        elif d0 == 6:
+        if d0 == 6:
             if matrix[x0+1][y0] == 0:
                 q.append((x0+1,y0,2))
                 clean += 1
             else:
                 d0 += 1
-        elif d0 == 7:
+        if d0 == 7:
             if matrix[x0][y0+1] == 0:
                 q.append((x0,y0+1,3))
                 clean += 1
