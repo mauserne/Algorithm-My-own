@@ -1,4 +1,6 @@
-from collections import deque
+import sys
+
+input = sys.stdin.readline
 
 
 N, M = map(int, input().split())
@@ -9,67 +11,37 @@ matrix = []
 for _ in range(N):
     matrix.append(list(map(int,input().split())))
 
-def bfs():
-    clean = 1
-    q = deque()
-    q.append((r,c,d))
-    while q:
-        print(q)
-        x0,y0,d0 = q.popleft()
-        matrix[x0][y0] = 2
-        for i in matrix:
-            print(i)
-        if d0 == 0:
-            if matrix[x0-1][y0] == 0:
-                q.append((x0-1,y0,0))
-                clean += 1
-            else:
-                d0 += 1
-        if d0 == 1:
-            if matrix[x0][y0-1] == 0:
-                q.append((x0,y0-1,1))
-                clean += 1
-            else:
-                d0 += 1
-        if d0 == 2:
-            if matrix[x0+1][y0] == 0:
-                q.append((x0+1,y0,2))
-                clean += 1
-            else:
-                d0 += 1
-        if d0 == 3:
-            if matrix[x0][y0+1] == 0:
-                q.append((x0,y0+1,3))
-                clean += 1
-            else:
-                d0 += 1
-        if d0 == 4:
-            if matrix[x0-1][y0] == 0:
-                q.append((x0-1,y0,0))
-                clean += 1
-            else:
-                d0 += 1
-        if d0 == 5:
-            if matrix[x0][y0-1] == 0:
-                q.append((x0,y0-1,1))
-                clean += 1
-            else:
-                d0 += 1
-        if d0 == 6:
-            if matrix[x0+1][y0] == 0:
-                q.append((x0+1,y0,2))
-                clean += 1
-            else:
-                d0 += 1
-        if d0 == 7:
-            if matrix[x0][y0+1] == 0:
-                q.append((x0,y0+1,3))
-                clean += 1
-            else:
-                d0 += 1
-        
-        
-    return clean
+dx = [-1,0,1,0]
+dy = [0,1,0,-1]
 
+count = 1
+x = r
+y = c
 
-print(bfs())
+while True:
+    foundway = False
+    matrix[x][y] = 2 # 현재위치를 청소한다
+
+    for _ in range(4):
+        d = (d+3)%4
+        nx = x + dx[d]
+        ny = y + dy[d]
+
+        if 0 < nx < N and 0 < ny < M:
+            if matrix[nx][ny] == 0:
+                x = nx
+                y = ny
+                foundway = True
+                count += 1
+                break
+        
+    if not foundway:
+        nx = x + dx[(d+2)%4]
+        ny = y + dy[(d+2)%4]
+        if matrix[nx][ny] == 1:
+            print(count)
+            exit()
+        else:
+            x = nx
+            y = ny
+        
