@@ -1,9 +1,5 @@
-from copy import deepcopy
-
-matrix = [[[1]],[[1]],[[1]]]
-
-submatrix = deepcopy(matrix)
-
-submatrix[0][0][0] =5
-print(matrix)
-print(submatrix)
+dic = dict()
+dic[1] = 10
+dic[2] = 20
+a = sorted(dic.items())
+print(type(a[0]),a[1])
