@@ -1,38 +1,66 @@
-def solution(name):
+def sol3(name):
     answer = 0
-    name = list(name)
-    namelen = len(name)-1
-    cursor = 0
-    left = 0
-    right = namelen
-    rightfirst = namelen
+    min_move = len(name) - 1
+    
+    while name[min_move] == 'A' and min_move > 0:
+        min_move -= 1
 
-    for word in name:
-        if word != 'A':
-            alp = ord(word) - 65
-            if alp > 12:
-                answer += 26 - alp
-            else:
-                answer += alp
-            print(answer)
-  
-    while cursor < namelen - cursor:
-        if name[cursor] != 'A':
-            left = cursor
-        if name[namelen - cursor] != 'A':
-            if not rightfirst:
-                rightfirst = namelen - cursor
-            right = namelen - cursor
-        cursor += 1
+    for idx, char in enumerate(name):
+        answer += min(ord(char)-ord('A') , ord('Z') - ord(char) + 1)
 
-    print(left,right)
-    if right-left < left + namelen - right:
-        answer += rightfirst
-    if left < right:
-        answer += left*2 + (namelen - right) +1
-    else:
-        answer += right*2 + 1 +left
+        next = idx + 1
+        for i in range(idx + 1, len(name)):
+            if name[i] != 'A':
+                next = i
+                break
+        min_move = min(min_move, idx*2 + len(name) - next, (len(name)-next)*2 + idx)
+    
+    answer += min_move
+    return answer
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def solution(name):
+
+	# 조이스틱 조작 횟수 
+    answer = 0
+    
+    # 기본 최소 좌우이동 횟수는 길이 - 1
+    min_move = len(name) - 1
+
+    while name[min_move] == 'A' and min_move > 0:
+        min_move -= 1
+    print(min_move)
+    for i, char in enumerate(name):
+        if char != 'A':
+    	    # 해당 알파벳 변경 최솟값 추가
+            answer += min(ord(char) - ord('A'), ord('Z') - ord(char) + 1)
+
+            # 해당 알파벳 다음부터 연속된 A 문자열 찾기
+            next = i + 1
+            while next < len(name) and name[next] == 'A':
+                next += 1
+
+            # 기존, 연속된 A의 왼쪽시작 방식, 연속된 A의 오른쪽시작 방식 비교 및 갱신
+            min_move = min(min_move, i*2 + len(name) - next , i + (len(name) - next)*2 )
+        
+    # 알파벳 변경(상하이동) 횟수에 좌우이동 횟수 추가
+    answer += min_move
     return answer
 
 def sol(name):
@@ -77,7 +105,6 @@ def sol2(name):
     left, right = 0,0
 
     for i in range(1,nameleng):
-        print(visited)
         if name[i] != 'A':
             if visited[i]:
                 break
@@ -97,18 +124,13 @@ def sol2(name):
     if left == 0 and right == 0:
         pass
     else:
-        if leftfirst + rightfirst > nameleng - left - right:
-            print(left,right)
-            print('as')
+        if leftfirst + rightfirst > nameleng -1 - left - right:
             answer += nameleng - leftfirst
         else:
-            print(leftfirst,rightfirst)
             if left < right:
                 answer += left*2 + right
             else:
                 answer += right*2 + left
-    
-    print(answer)
     
     for i in name:
         if i != 'A':
@@ -122,4 +144,4 @@ def sol2(name):
 
 
 
-print('출력', sol2(input()))
+print('출력', sol3(input()))
