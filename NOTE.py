@@ -1,4 +1,3 @@
-a = [False] * 3
-
-if not True in a:
-    print(3)
+a = 'aaaaa'
+a= a[:10]
+print(a)
