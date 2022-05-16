@@ -9,11 +9,8 @@ def solution(new_id):
             answer = answer.replace(answer[idx],'')
         if idx == len(answer):
             break
-    while '...' in answer:
-        answer = answer.replace('...','.')
     while '..' in answer:
         answer = answer.replace('..','.')
-    print(answer)
 
     if answer and answer[0] == '.':
         answer = answer[1:]
