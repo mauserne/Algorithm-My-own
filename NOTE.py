@@ -1,8 +1,3 @@
-from itertools import permutations
-
-numbers = '17'
-nums = set()
-
-for i in range(1,len(numbers)):
-    nums.update(map(int,list(permutations(numbers,i))))
-print(nums)
+a = ['200','1', '11','100', '2','5','201']
+a.sort()
+print(a)
