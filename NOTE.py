@@ -1,3 +1,4 @@
-a = ['200','1', '11','100', '2','5','201']
-a.sort()
-print(a)
+a=['a','b','c']
+
+for i,v in enumerate(a):
+    print(i,v)

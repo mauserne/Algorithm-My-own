@@ -40,3 +40,25 @@ print('출력',solution(['pop' ,'pop' ,'pop', 'rap','rap'], [45,50,40, 60, 70]))
 테스트 14 〉	통과 (0.06ms, 10.1MB)
 테스트 15 〉	통과 (0.01ms, 10.1MB)
 """
+
+def sol1(genres, plays):
+    answer = []
+    dic = {}
+
+    for i in range(len(genres)):
+        if not genres[i] in dic:
+            dic[genres[i]] = [plays[i], [(plays[i],i)]]
+        else:
+            dic[genres[i]][0] += plays[i]
+            dic[genres[i]][1].append((plays[i],i))
+            
+    bestgenre = sorted(dic, reverse=True, key= lambda x:x[1])
+    for i in bestgenre:
+        tmp = sorted(dic[i][1], key=lambda x:(-x[0], x[1]))[:2]
+        for i in tmp:
+            answer.append(i[1])
+
+
+    return answer
+    
+print('출력',sol1(['pop' ,'pop' ,'pop', 'rap','rap'], [45,50,40, 60, 70]))
