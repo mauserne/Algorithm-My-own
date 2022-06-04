@@ -1,4 +1,6 @@
-a=['a','b','c']
 
-for i,v in enumerate(a):
-    print(i,v)
+ans = 0
+for i in range(50):
+    ans += 1000 -i
+
+print(ans)
