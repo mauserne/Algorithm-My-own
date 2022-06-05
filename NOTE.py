@@ -1,6 +1,4 @@
+arr = [0,1,2]
 
-ans = 0
-for i in range(50):
-    ans += 1000 -i
-
-print(ans)
+arr= arr[3:]
+print(arr)
