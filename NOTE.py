@@ -1,8 +1,3 @@
-def a(arr):
-    arr[0] = False
-def b():
-    visit = [True]*5
-    a(visit)
-    print(visit)
+import bisect
 
-b()
+print(bisect.bisect([2,4,6,8],4))
