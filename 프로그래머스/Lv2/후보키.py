@@ -47,8 +47,6 @@ def solution(relation):
                     c = [str(i) for i in c]
                     answer[candkey] = 1
             
-                
-                
     return len(answer)
 
 print('출력 :', solution(    [['a','1','aaa','c','ng'],['b','1','bbb','c','g'],['c','1','aaa','d','ng'],['d','2','bbb','d','ng']]))
