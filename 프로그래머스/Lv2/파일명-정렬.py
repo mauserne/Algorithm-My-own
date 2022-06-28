@@ -1,28 +1,21 @@
-import heapq
-
 def solution(files):
     answer = []
     dic = dict()
-    dot = files[0].index('.')
-    files = [i[:dot] for i in files]
-    print(files)
+    
     for file in files:
-        tmpalpha = ''
-        tmpdigit = ''
-        dic[file] = ['',0]
-        for i in file:
-            if tmpalpha and tmpdigit:
-                break
-            if i.isalpha():
-                if tmpdigit:
-                    dic[file][1]=int(tmpdigit)
-                tmpalpha += i
-            if i.isdigit():
-                if tmpalpha:
-                    print(tmpalpha)
-                    dic[file][0]+=tmpalpha
-                tmpdigit += i
-    print(dic)
+        headidx = ''
+        numberidx = ''
+        for i in range(len(file)):
+            if file[i].isalpha() or file[i] in [' ','.','-']:
+                if numberidx:
+                    break
+                headidx += file[i]
+            elif file[i].isdigit():
+                numberidx += file[i]
+                
+        dic[file] = [headidx.upper(),int(numberidx)]
+        
+    for i in sorted(dic.items(), key= lambda x:(x[1][0],x[1][1])):
+        answer.append(i[0])
+    
     return answer
-
-print(solution(["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"]))
